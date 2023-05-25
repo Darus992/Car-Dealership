@@ -20,24 +20,34 @@ public class CarDealershipTest {
 
     private CarDealershipManagementService carDealershipManagementService;
     private CarPurchaseService carPurchaseService;
+    private CarServiceRequestService carServiceRequestService;
 
     @BeforeEach
     void beforeEach(){
 
+        CarDealershipManagementRepository carDealershipManagementDAO = new CarDealershipManagementRepository();
         CarDAO carDAO = new CarRepository();
         SalesmanDAO salesmanDAO = new SalesmanRepository();
         CustomerDAO customerDAO = new CustomerRepository();
+        CarService carService = new CarService(carDAO);
+        SalesmanService salesmanService = new SalesmanService(salesmanDAO);
+        CustomerService customerService = new CustomerService(customerDAO);
         FileDataPreparationService fileDataPreparationService = new FileDataPreparationService();
 
         this.carDealershipManagementService = new CarDealershipManagementService(
-                new CarDealershipManagementRepository(),
+                carDealershipManagementDAO,
                 fileDataPreparationService
         );
         this.carPurchaseService = new CarPurchaseService(
                 fileDataPreparationService,
-                new CustomerService(customerDAO),
-                new CarService(carDAO),
-                new SalesmanService(salesmanDAO)
+                customerService,
+                carService,
+                salesmanService
+        );
+        this.carServiceRequestService = new CarServiceRequestService(
+                fileDataPreparationService,
+                carService,
+                customerService
         );
     }
     @AfterAll
@@ -70,7 +80,7 @@ public class CarDealershipTest {
     @Order(4)
     void makeServiceRequests() {
         log.info("### RUNNING ORDER 4");
-
+        carServiceRequestService.requestService();
     }
 
     @Test
