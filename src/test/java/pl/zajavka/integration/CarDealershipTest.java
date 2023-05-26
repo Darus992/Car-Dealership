@@ -17,6 +17,7 @@ public class CarDealershipTest {
     private CarPurchaseService carPurchaseService;
     private CarServiceRequestService carServiceRequestService;
     private CarServiceProcessingService carServiceProcessingService;
+    private CarService carService;
 
     @BeforeEach
     void beforeEach(){
@@ -63,6 +64,9 @@ public class CarDealershipTest {
                 carServiceRequestService,
                 serviceRequestProcessingDAO
         );
+        this.carService = new CarService(
+                carDAO
+        );
     }
     @AfterAll
     static void afterAll() {
@@ -108,5 +112,7 @@ public class CarDealershipTest {
     @Order(6)
     void printCarHistory() {
         log.info("### RUNNING ORDER 5");
+        carService.printCarHistory("2C3CDYAG2DH731952");
+        carService.printCarHistory("1GCEC19X27Z109567");
     }
 }
