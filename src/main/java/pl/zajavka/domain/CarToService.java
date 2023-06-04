@@ -1,9 +1,8 @@
 package pl.zajavka.domain;
 
-import jakarta.persistence.*;
 import lombok.*;
-import pl.zajavka.infrastructure.database.entity.CarServiceRequestEntity;
 
+import java.util.Objects;
 import java.util.Set;
 
 @With
@@ -13,11 +12,17 @@ import java.util.Set;
 @EqualsAndHashCode(of = "carToServiceId")
 public class CarToService {
 
-
     Integer carToServiceId;
     String vin;
     String brand;
     String model;
     Integer year;
     Set<CarServiceRequest> carServiceRequests;
+
+    public Boolean carBoughtHere() {
+        return  Objects.nonNull(vin)
+                && Objects.isNull(brand)
+                && Objects.isNull(model)
+                && Objects.isNull(year);
+    }
 }

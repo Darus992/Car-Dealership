@@ -1,10 +1,6 @@
 package pl.zajavka.domain;
 
-import jakarta.persistence.*;
 import lombok.*;
-import pl.zajavka.infrastructure.database.entity.CarToBuyEntity;
-import pl.zajavka.infrastructure.database.entity.CustomerEntity;
-import pl.zajavka.infrastructure.database.entity.SalesmanEntity;
 
 import java.time.OffsetDateTime;
 
@@ -12,7 +8,7 @@ import java.time.OffsetDateTime;
 @Value
 @Builder
 @ToString(of = {"invoiceId", "invoiceNumber", "dateTime"})
-@EqualsAndHashCode(of = "invoiceId")
+@EqualsAndHashCode(of = "invoiceNumber")
 public class Invoice {
 
     Integer invoiceId;

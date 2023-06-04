@@ -1,10 +1,7 @@
 package pl.zajavka.domain;
 
 
-import jakarta.persistence.*;
 import lombok.*;
-import pl.zajavka.infrastructure.database.entity.CarServiceRequestEntity;
-import pl.zajavka.infrastructure.database.entity.PartEntity;
 
 @With
 @Value

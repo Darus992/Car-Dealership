@@ -1,5 +1,7 @@
 package pl.zajavka.infrastructure.configuration;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import jakarta.persistence.EntityManagerFactory;
 import lombok.AllArgsConstructor;
 import org.flywaydb.core.Flyway;
@@ -36,7 +38,7 @@ public class PersistenceJPAConfiguration {
 
     @Bean
     @DependsOn("flyway")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPackagesToScan(_EntityMarker.class.getPackageName());
@@ -45,8 +47,8 @@ public class PersistenceJPAConfiguration {
         return entityManagerFactoryBean;
     }
 
-    private Properties jpaProperties() {
-        final Properties properties = new Properties();
+    Properties jpaProperties() {
+        Properties properties = new Properties();
         properties.setProperty(Environment.DIALECT, environment.getProperty(Environment.DIALECT));
         properties.setProperty(Environment.HBM2DDL_AUTO, environment.getProperty(Environment.HBM2DDL_AUTO));
         properties.setProperty(Environment.SHOW_SQL, environment.getProperty(Environment.SHOW_SQL));
@@ -54,14 +56,23 @@ public class PersistenceJPAConfiguration {
         return properties;
     }
 
-    @Bean
-    private DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(Objects.requireNonNull(environment.getProperty("jdbc.driverClassName")));
-        dataSource.setUrl(environment.getProperty("jdbc.url"));
-        dataSource.setUsername(environment.getProperty("jdbc.user"));
-        dataSource.setPassword(environment.getProperty("jdbc.pass"));
-        return dataSource;
+    @Bean(destroyMethod = "close")
+    public DataSource dataSource() {
+        HikariConfig hikariConfig = new HikariConfig();
+        hikariConfig.setDriverClassName(Objects.requireNonNull(environment.getProperty("jdbc.driverClassName")));
+        hikariConfig.setJdbcUrl(environment.getProperty("jdbc.url"));
+        hikariConfig.setUsername(environment.getProperty("jdbc.user"));
+        hikariConfig.setPassword(environment.getProperty("jdbc.pass"));
+
+        hikariConfig.setConnectionTestQuery("SELECT 1");
+        hikariConfig.setPoolName("springHikariCP");
+
+        hikariConfig.setMaximumPoolSize(20);
+        hikariConfig.setConnectionTimeout(20000);
+        hikariConfig.setMinimumIdle(10);
+        hikariConfig.setIdleTimeout(300000);
+
+        return new HikariDataSource(hikariConfig);
     }
 
     @Bean
@@ -80,19 +91,8 @@ public class PersistenceJPAConfiguration {
     Flyway flyway() {
         ClassicConfiguration configuration = new ClassicConfiguration();
         configuration.setBaselineOnMigrate(true);
-        configuration.setLocations(new Location("filesystem:src/main/resources.flyway/migrations"));
+        configuration.setLocations(new Location("filesystem:src/main/resources/flyway/migrations"));
         configuration.setDataSource(dataSource());
         return new Flyway(configuration);
     }
-
-//    private static final Map<String, Object> HIBERNATE_SETTINGS = Map.ofEntries(
-//            Map.entry(Environment.CONNECTION_PROVIDER, "org.hibernate.hikaricp.internal.HikariCPConnectionProvider"),
-//    );
-//
-//    private static final Map<String, Object> HIKARI_CP_SETTINGS = Map.ofEntries(
-//            Map.entry("hibernate.hikari.connectionTimeout", "20000"),
-//            Map.entry("hibernate.hikari.minimumIdle", "10"),
-//            Map.entry("hibernate.hikari.maximumPoolSize", "20"),
-//            Map.entry("hibernate.hikari.idleTimeout", "300000")
-//    );
 }

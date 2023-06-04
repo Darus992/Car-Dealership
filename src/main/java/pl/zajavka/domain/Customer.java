@@ -1,10 +1,6 @@
 package pl.zajavka.domain;
 
-import jakarta.persistence.*;
 import lombok.*;
-import pl.zajavka.infrastructure.database.entity.AddressEntity;
-import pl.zajavka.infrastructure.database.entity.CarServiceRequestEntity;
-import pl.zajavka.infrastructure.database.entity.InvoiceEntity;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -25,4 +21,12 @@ public class Customer {
     Address address;
     Set<Invoice> invoices;
     Set<CarServiceRequest> carServiceRequests;
+
+    public Set<Invoice> getInvoices() {
+        return Objects.isNull(invoices) ? new HashSet<>() : invoices;
+    }
+
+    public Set<CarServiceRequest> getCarServiceRequests() {
+        return Objects.isNull(carServiceRequests) ? new HashSet<>() : carServiceRequests;
+    }
 }

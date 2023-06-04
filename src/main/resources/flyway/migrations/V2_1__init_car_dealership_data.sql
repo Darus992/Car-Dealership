@@ -29,7 +29,7 @@ values
 ('14222-2022', 'Wymiana filtra paliwa', '14.98');
 
 
-insert into PART (service_number, description, price)
+insert into PART (serial_number, description, price)
 values
 ('11523-7310', 'Koło', '320.11'),
 ('54340-777', 'Olej', '270.18'),
