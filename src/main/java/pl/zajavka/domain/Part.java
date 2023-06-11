@@ -9,7 +9,7 @@ import java.util.Set;
 @Value
 @Builder
 @ToString(of = {"partId", "serialNumber", "description", "price"})
-@EqualsAndHashCode(of = "partId")
+@EqualsAndHashCode(of = "serialNumber")
 public class Part {
 
     Integer partId;

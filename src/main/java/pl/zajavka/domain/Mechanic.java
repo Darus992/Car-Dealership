@@ -8,7 +8,7 @@ import java.util.Set;
 @Value
 @Builder
 @ToString(of = {"mechanicId", "name", "surname", "pesel"})
-@EqualsAndHashCode(of = "mechanicId")
+@EqualsAndHashCode(of = "pesel")
 public class Mechanic {
 
     Integer mechanicId;

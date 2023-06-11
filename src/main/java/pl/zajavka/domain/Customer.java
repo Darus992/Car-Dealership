@@ -10,7 +10,7 @@ import java.util.Set;
 @Value
 @Builder
 @ToString(of = {"customerId", "name", "surname", "email"})
-@EqualsAndHashCode(of = "customerId")
+@EqualsAndHashCode(of = "email")
 public class Customer {
 
     Integer customerId;
