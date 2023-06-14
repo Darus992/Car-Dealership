@@ -1,16 +1,16 @@
 package pl.zajavka.api.dto.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import pl.zajavka.api.dto.CarServiceCustomerRequestDTO;
-import pl.zajavka.domain.Address;
-import pl.zajavka.domain.CarServiceRequest;
-import pl.zajavka.domain.CarToService;
-import pl.zajavka.domain.Customer;
+import pl.zajavka.api.dto.CarServiceMechanicProcessingUnitDTO;
+import pl.zajavka.api.dto.CarServiceRequestDTO;
+import pl.zajavka.domain.*;
 
 import java.util.Set;
 
 @Mapper(componentModel = "spring")
-public interface CarServiceRequestMapper {
+public interface CarServiceRequestMapper extends OffsetDateTimeMapper {
 
     default CarServiceRequest map(CarServiceCustomerRequestDTO dto){
         if(dto.isNewCarCandidate()){
@@ -47,4 +47,12 @@ public interface CarServiceRequestMapper {
                     .build();
         }
     }
+
+    @Mapping(source = "car.vin", target = "carVin")
+    @Mapping(source = "receivedDateTime", target = "receivedDateTime", qualifiedByName = "mapOffsetDateTimeToString")
+    @Mapping(source = "completedDateTime", target = "completedDateTime", qualifiedByName = "mapOffsetDateTimeToString")
+    CarServiceRequestDTO map(CarServiceRequest request);
+
+    @Mapping(source = "mechanicComment", target = "comment")
+    CarServiceProcessingRequest map(CarServiceMechanicProcessingUnitDTO dto);
 }

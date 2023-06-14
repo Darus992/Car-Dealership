@@ -12,6 +12,8 @@ import java.util.Set;
 @EqualsAndHashCode(of = "serialNumber")
 public class Part {
 
+    public static final String NONE = "NONE";
+
     Integer partId;
     String serialNumber;
     String description;
