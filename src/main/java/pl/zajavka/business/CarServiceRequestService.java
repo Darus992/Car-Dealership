@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.zajavka.business.dao.CarServiceRequestDAO;
 import pl.zajavka.domain.*;
+import pl.zajavka.domain.exception.NotFoundException;
 import pl.zajavka.domain.exception.ProcessingException;
 
 import java.time.OffsetDateTime;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -116,11 +116,11 @@ public class CarServiceRequestService {
         Set<CarServiceRequest> serviceRequest = carServiceRequestDAO.findActiveServiceRequestByCarVin(carVin);
 
         if (serviceRequest.size() != 1) {
-            throw new RuntimeException(
+            throw new NotFoundException(
                     "There should be only one active service request at a time, car vin: [%s]".formatted(carVin));
         }
         return serviceRequest.stream()
                 .findAny()
-                .orElseThrow(() -> new RuntimeException("Could not find any service request, car vin: [%s]".formatted(carVin)));
+                .orElseThrow(() -> new NotFoundException("Could not find any service request, car vin: [%s]".formatted(carVin)));
     }
 }

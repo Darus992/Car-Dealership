@@ -1,6 +1,5 @@
 package pl.zajavka.api.dto;
 
-import com.sun.jdi.PrimitiveValue;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

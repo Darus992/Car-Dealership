@@ -3,12 +3,9 @@ package pl.zajavka.business;
 import lombok.AllArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import pl.zajavka.business.dao.ServiceRequestProcessingDAO;
-import pl.zajavka.domain.CarServiceProcessingRequest;
 import pl.zajavka.domain.*;
 
 import java.time.OffsetDateTime;
-import java.util.List;
-import java.util.Objects;
 
 @org.springframework.stereotype.Service
 @AllArgsConstructor
