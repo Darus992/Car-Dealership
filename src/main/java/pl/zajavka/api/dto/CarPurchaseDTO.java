@@ -25,7 +25,7 @@ public class CarPurchaseDTO {
     private String customerSurname;
 
     @Size
-    @Pattern(regexp = "^[+]\\d{2}\\s\\d{3}\\s\\d{3}\\s\\d{3}$ó")
+    @Pattern(regexp = "^[+]\\d{2}\\s\\d{3}\\s\\d{3}\\s\\d{3}$")
     private String customerPhone;
 
     @Email
