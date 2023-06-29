@@ -34,14 +34,18 @@ public class SecurityConfiguration {
                 .build();
     }
 
+    //  Disable security - csrf() for testing purposes
     @Bean
     @ConditionalOnProperty(value = "spring.security.enabled", havingValue = "true", matchIfMissing = true)
     SecurityFilterChain securityEnabled(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeHttpRequests()
+        httpSecurity.csrf()
+                .disable()
+                .authorizeHttpRequests()
                 .requestMatchers("/login", "/error", "/images/oh_no.png").permitAll()
                 .requestMatchers("/mechanic/**").hasAnyAuthority("MECHANIC")
                 .requestMatchers("/salesman/**", "/purchase/**", "/service/**").hasAnyAuthority("SALESMAN")
                 .requestMatchers("/", "/car/**", "/images/**").hasAnyAuthority("MECHANIC", "SALESMAN")
+                .requestMatchers("/api/**").hasAnyAuthority("REST_API")
                 .and()
                 .formLogin()
                 .permitAll()
@@ -55,10 +59,13 @@ public class SecurityConfiguration {
         return httpSecurity.build();
     }
 
+    //  Disable security - csrf() for testing purposes
     @Bean
     @ConditionalOnProperty(value = "spring.security.enabled", havingValue = "false")
     SecurityFilterChain securityDisabled(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeHttpRequests()
+        httpSecurity.csrf()
+                .disable()
+                .authorizeHttpRequests()
                 .anyRequest()
                 .permitAll();
 
