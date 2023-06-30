@@ -1,5 +1,6 @@
 package pl.zajavka.api.controller;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -34,12 +35,8 @@ public class ServiceController {
 
     @PostMapping(value = SERVICE_REQUEST)
     public String makeServiceRequest(
-            @ModelAttribute("carServiceRequestDTO") CarServiceCustomerRequestDTO carServiceCustomerRequestDTO,
-            BindingResult bindingResult
+            @Valid @ModelAttribute("carServiceRequestDTO") CarServiceCustomerRequestDTO carServiceCustomerRequestDTO
     ){
-        if(bindingResult.hasErrors()){
-            return "error";
-        }
         CarServiceRequest serviceRequest = carServiceRequestMapper.map(carServiceCustomerRequestDTO);
         carServiceRequestService.makeServiceRequest(serviceRequest);
         return "car_service_request_done";
