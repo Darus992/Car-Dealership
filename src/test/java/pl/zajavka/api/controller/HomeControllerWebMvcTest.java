@@ -10,13 +10,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @ActiveProfiles("test")
 @WebMvcTest(controllers = HomeController.class)
 @AutoConfigureMockMvc(addFilters = false)
 @AllArgsConstructor(onConstructor = @__(@Autowired))
-class HomeControllerTest {
+class HomeControllerWebMvcTest {
 
     private MockMvc mockMvc;
 

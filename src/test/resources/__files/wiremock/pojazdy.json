@@ -1,0 +1,140 @@
+{
+  "data": [
+    {
+      "id": "6146580331568834",
+      "type": "pojazdy",
+      "attributes": {
+        "marka": "TOYOTA",
+        "kategoria-pojazdu": "13",
+        "typ": "AX1T(EU,M)",
+        "model": "TOYOTA C-HR",
+        "wariant": "ZYX11(H)",
+        "rodzaj-pojazdu": "SAMOCHÓD OSOBOWY",
+        "pochodzenie-pojazdu": "UŻYW. ZAKUPIONY W KRAJU",
+        "rok-produkcji": "FABRYCZNY",
+        "data-pierwszej-rejestracji-w-kraju": "2021-10-11",
+        "pojemnosc-skokowa-silnika": 1798,
+        "masa-wlasna": 1428,
+        "rodzaj-paliwa": "BENZYNA",
+        "wojewodztwo-kod": "14"
+      },
+      "links": {
+        "self": "https://api.cepik.gov.pl/pojazdy/6146580331568834"
+      }
+    },
+    {
+      "id": "604539927931971",
+      "type": "pojazdy",
+      "attributes": {
+        "marka": "NISSAN",
+        "kategoria-pojazdu": "13",
+        "typ": "J12",
+        "model": "NISSAN QASHQAI",
+        "wariant": "A",
+        "rodzaj-pojazdu": "SAMOCHÓD OSOBOWY",
+        "pochodzenie-pojazdu": "UŻYW. ZAKUPIONY W KRAJU",
+        "rok-produkcji": "FABRYCZNY",
+        "data-pierwszej-rejestracji-w-kraju": "2021-10-11",
+        "pojemnosc-skokowa-silnika": 1332,
+        "masa-wlasna": 1463,
+        "rodzaj-paliwa": "BENZYNA",
+        "wojewodztwo-kod": "14"
+      },
+      "links": {
+        "self": "https://api.cepik.gov.pl/pojazdy/604539927931971"
+      }
+    },
+    {
+      "id": "5825455199861751",
+      "type": "pojazdy",
+      "attributes": {
+        "marka": "OPEL",
+        "kategoria-pojazdu": "11111111",
+        "typ": "---",
+        "model": "ASTRA",
+        "wariant": "---",
+        "rodzaj-pojazdu": "SAMOCHÓD OSOBOWY",
+        "pochodzenie-pojazdu": "UŻYW. IMPORT INDYW",
+        "rok-produkcji": "FABRYCZNY",
+        "data-pierwszej-rejestracji-w-kraju": "2021-10-11",
+        "pojemnosc-skokowa-silnika": 1362,
+        "masa-wlasna": 1503,
+        "rodzaj-paliwa": "BENZYNA",
+        "wojewodztwo-kod": "14"
+      },
+      "links": {
+        "self": "https://api.cepik.gov.pl/pojazdy/5825455199861751"
+      }
+    },
+    {
+      "id": "3484104437690863",
+      "type": "pojazdy",
+      "attributes": {
+        "marka": "OPEL",
+        "kategoria-pojazdu": "11111111",
+        "typ": "---",
+        "model": "VECTRA",
+        "wariant": "---",
+        "rodzaj-pojazdu": "SAMOCHÓD OSOBOWY",
+        "pochodzenie-pojazdu": "UŻYW. ZAKUPIONY W KRAJU",
+        "rok-produkcji": "FABRYCZNY",
+        "data-pierwszej-rejestracji-w-kraju": "2021-10-11",
+        "pojemnosc-skokowa-silnika": 1598,
+        "masa-wlasna": 1390,
+        "rodzaj-paliwa": "BENZYNA",
+        "wojewodztwo-kod": "14"
+      },
+      "links": {
+        "self": "https://api.cepik.gov.pl/pojazdy/3484104437690863"
+      }
+    },
+    {
+      "id": "2497690509638911",
+      "type": "pojazdy",
+      "attributes": {
+        "marka": "MAZDA",
+        "kategoria-pojazdu": "11111111",
+        "typ": "---",
+        "model": "2",
+        "wariant": "---",
+        "rodzaj-pojazdu": "SAMOCHÓD OSOBOWY",
+        "pochodzenie-pojazdu": "UŻYW. ZAKUPIONY W KRAJU",
+        "rok-produkcji": "FABRYCZNY",
+        "data-pierwszej-rejestracji-w-kraju": "2021-10-11",
+        "pojemnosc-skokowa-silnika": 1349,
+        "masa-wlasna": 1087,
+        "rodzaj-paliwa": "BENZYNA",
+        "wojewodztwo-kod": "14"
+      },
+      "links": {
+        "self": "https://api.cepik.gov.pl/pojazdy/2497690509638911"
+      }
+    }
+  ],
+  "meta": {
+    "json-ld-id": "/pojazdy?wojewodztwo=14&data-od=20211010&data-do=20221010&limit=5&page=1&typ-daty=1&tylko-zarejestrowane=true&pokaz-wszystkie-pola=false",
+    "schema": "https://api.cepik.gov.pl/www/schema/vehicle.json",
+    "dc:title": "Lista pojazdów",
+    "schema:provider": "Ministerstwo Cyfryzacji",
+    "schema:datePublished": "2019-05-13",
+    "schema:dateModified": "2023-07-01",
+    "dc:description": "Lista pojazdów udostępnionych z bazy CEPiK",
+    "dc:language": "pl",
+    "sy:updatePeriod": "weekly",
+    "sy:updateFrequency": "1",
+    "sy:updateBase": "2023-07-08",
+    "schema:contentType": "application/json",
+    "schema:isPartOf": "https://api.cepik.gov.pl/pojazdy",
+    "count": 6,
+    "page": 1,
+    "limit": 5,
+    "dc:rights": "brak",
+    "schema:keywords": "pojazdy, cepik, cep, dane techniczne, spalanie, samochody, autobusy, motocykle, daty rejestracji"
+  },
+  "links": {
+    "first": "https://api.cepik.gov.pl/pojazdy?wojewodztwo=14&data-od=20211010&data-do=20221010&limit=5&page=1&typ-daty=1&tylko-zarejestrowane=true&pokaz-wszystkie-pola=false",
+    "self": "https://api.cepik.gov.pl/pojazdy?wojewodztwo=14&data-od=20211010&data-do=20221010&limit=5&page=1&typ-daty=1&tylko-zarejestrowane=true&pokaz-wszystkie-pola=false",
+    "next": "https://api.cepik.gov.pl/pojazdy?wojewodztwo=14&data-od=20211010&data-do=20221010&limit=5&page=2&typ-daty=1&tylko-zarejestrowane=true&pokaz-wszystkie-pola=false",
+    "last": "https://api.cepik.gov.pl/pojazdy?wojewodztwo=14&data-od=20211010&data-do=20221010&limit=5&page=2&typ-daty=1&tylko-zarejestrowane=true&pokaz-wszystkie-pola=false"
+  }
+}

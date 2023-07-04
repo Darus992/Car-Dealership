@@ -7,10 +7,9 @@ api:
   cepik:
     url: https://api.cepik.gov.pl/
 
-#Disable security for testing purposes
 spring:
   security:
-    enabled: false
+    enabled: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: org.postgresql.Driver

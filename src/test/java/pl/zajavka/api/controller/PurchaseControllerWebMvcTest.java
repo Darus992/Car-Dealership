@@ -27,7 +27,7 @@ import java.util.stream.Stream;
 @WebMvcTest(controllers = PurchaseController.class)
 @AutoConfigureMockMvc(addFilters = false)
 @AllArgsConstructor(onConstructor = @__(@Autowired))
-public class PurchaseControllerTest {
+public class PurchaseControllerWebMvcTest {
 
     private MockMvc mockMvc;
 

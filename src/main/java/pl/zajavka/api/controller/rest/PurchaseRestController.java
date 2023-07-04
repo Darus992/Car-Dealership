@@ -17,7 +17,7 @@ import pl.zajavka.domain.Invoice;
 @RequestMapping(PurchaseRestController.API_PURCHASE)
 public class PurchaseRestController {
 
-    static final String API_PURCHASE = "/api/purchase";
+    public static final String API_PURCHASE = "/api/purchase";
 
     private final CarPurchaseService carPurchaseService;
     private final CarPurchaseMapper carPurchaseMapper;
